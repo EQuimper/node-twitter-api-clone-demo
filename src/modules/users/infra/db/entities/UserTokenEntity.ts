@@ -18,7 +18,7 @@ export default class UserTokenEntity {
   @Generated('uuid')
   token: string;
 
-  @Column('user_id')
+  @Column({ name: 'user_id' })
   userId: number;
 
   @ManyToOne((type) => UserEntity, (user) => user.userTokens)
