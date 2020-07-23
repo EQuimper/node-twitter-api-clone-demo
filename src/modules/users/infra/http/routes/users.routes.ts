@@ -11,7 +11,7 @@ const usersController = new UsersController();
 usersRouter.post(
   '/',
   celebrate({
-    [Segments.BODY]: Joi.object<ICreateUserDto>({
+    [Segments.BODY]: Joi.object<ICreateUserDto & { passwordConfirmation: string }>({
       username: Joi.string().required(),
       email: Joi.string().email().required(),
       password: Joi.string().min(6).required(),
