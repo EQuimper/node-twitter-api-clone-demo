@@ -1,6 +1,6 @@
-import { container } from "tsyringe";
+import { container } from 'tsyringe';
 
-import BCryptHashProvider from "./BCryptHashProvider";
-import IHashProvider from "./interfaces/IHashProvider";
+import BCryptHashProvider from './BCryptHashProvider';
+import IHashProvider from './interfaces/IHashProvider';
 
-container.register<IHashProvider>('HashProvider', BCryptHashProvider)
+container.register<IHashProvider>('HashProvider', BCryptHashProvider);

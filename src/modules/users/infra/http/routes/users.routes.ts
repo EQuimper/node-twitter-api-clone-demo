@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { celebrate, Joi, Segments } from 'celebrate';
 
-import UsersController from '@modules/users/infra/http/controllers/users.controller';
+import UsersController from '@modules/users/infra/http/controllers/UsersController';
 import ICreateUserDto from '@modules/users/interfaces/dtos/ICreateUserDto';
 
 const usersRouter = Router();

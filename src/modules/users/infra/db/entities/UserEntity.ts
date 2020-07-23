@@ -5,8 +5,10 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
+  OneToMany,
 } from 'typeorm';
 import { Exclude } from 'class-transformer';
+import UserTokenEntity from './UserTokenEntity';
 
 @Entity('users')
 export default class UserEntity {
@@ -22,6 +24,11 @@ export default class UserEntity {
   @Column()
   @Exclude()
   password: string;
+
+  @OneToMany((type) => UserTokenEntity, (userToken) => userToken.userId, {
+    cascade: true,
+  })
+  userTokens: UserTokenEntity[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

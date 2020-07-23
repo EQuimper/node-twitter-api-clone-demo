@@ -1,6 +1,6 @@
-import { hash, compare } from 'bcryptjs'
+import { hash, compare } from 'bcryptjs';
 
-import IHashProvider from "./interfaces/IHashProvider";
+import IHashProvider from './interfaces/IHashProvider';
 
 export default class BCryptHashProvider implements IHashProvider {
   public generateHash(payload: string): Promise<string> {
@@ -8,6 +8,6 @@ export default class BCryptHashProvider implements IHashProvider {
   }
 
   public compareHash(payload: string, hashed: string): Promise<boolean> {
-    return compare(payload, hashed)
+    return compare(payload, hashed);
   }
 }
