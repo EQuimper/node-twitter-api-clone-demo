@@ -1,3 +1,4 @@
+import TweetEntity from '@modules/tweets/infra/db/entities/TweetEntity';
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -29,6 +30,9 @@ export default class UserEntity {
     cascade: true,
   })
   userTokens: UserTokenEntity[];
+
+  @OneToMany((type) => TweetEntity, (tweet) => tweet.userId, { cascade: true })
+  tweets: TweetEntity[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

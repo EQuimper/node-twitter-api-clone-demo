@@ -5,7 +5,7 @@ export default class EmailAlreadyTaken implements IAppError {
   public statusCode: number;
 
   constructor() {
-    this.message = 'Email already taken';
+    this.message = 'email already taken';
     this.statusCode = 400;
   }
 }

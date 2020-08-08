@@ -5,7 +5,7 @@ export default class UsernameAlreadyTaken implements IAppError {
   public statusCode: number;
 
   constructor() {
-    this.message = 'Username already taken';
+    this.message = 'username already taken';
     this.statusCode = 400;
   }
 }

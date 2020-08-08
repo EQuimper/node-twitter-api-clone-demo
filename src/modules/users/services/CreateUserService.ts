@@ -6,7 +6,7 @@ import IHashProvider from '../providers/HashProvider/interfaces/IHashProvider';
 import EmailAlreadyTaken from '@modules/users/errors/EmailAlreadyTaken';
 import UsernameAlreadyTaken from '@modules/users/errors/UsernameAlreadyTaken';
 
-interface IRequest {
+interface IData {
   username: string;
   email: string;
   password: string;
@@ -21,7 +21,7 @@ export default class CreateUserService {
     private _hashProvider: IHashProvider,
   ) {}
 
-  public async execute(data: IRequest): Promise<UserEntity> {
+  public async execute(data: IData): Promise<UserEntity> {
     const userWithEmailExist = await this._usersRepository.findByEmail(data.email);
     if (userWithEmailExist) {
       throw new EmailAlreadyTaken();

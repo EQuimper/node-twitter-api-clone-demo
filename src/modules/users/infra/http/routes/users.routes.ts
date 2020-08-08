@@ -11,12 +11,17 @@ const usersController = new UsersController();
 usersRouter.post(
   '/',
   celebrate({
-    [Segments.BODY]: Joi.object<ICreateUserDto & { passwordConfirmation: string }>({
-      username: Joi.string().required(),
-      email: Joi.string().email().required(),
-      password: Joi.string().min(6).required(),
-      passwordConfirmation: Joi.ref('password'),
-    }),
+    [Segments.BODY]: Joi.object<ICreateUserDto & { passwordConfirmation: string }>().keys(
+      {
+        username: Joi.string().required(),
+        email: Joi.string().email().required(),
+        password: Joi.string().min(6).required(),
+        passwordConfirmation: Joi.string()
+          .required()
+          .valid(Joi.ref('password'))
+          .error(new Error('passwordConfirmation must match password')),
+      },
+    ),
   }),
   usersController.create,
 );
